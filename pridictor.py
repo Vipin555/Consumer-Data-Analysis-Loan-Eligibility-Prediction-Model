@@ -48,13 +48,13 @@ for dataset in data:
                         pd.crosstab(train.Gender, train.Loan_Status, margins = True)
                         train.Gender = train.Gender.fillna(train.Gender.mode())
                         test.Gender = test.Gender.fillna(test.Gender.mode())
-sex = pd.get_dummies(train['Gender'] , drop_first = True )
+gen = pd.get_dummies(train['Gender'] , drop_first = True )
 train.drop(['Gender'], axis = 1 , inplace =True)
-train = pd.concat([train , sex ] , axis = 1)
+train = pd.concat([train , gen ] , axis = 1)
 
-sex = pd.get_dummies(test['Gender'] , drop_first = True )
+gen = pd.get_dummies(test['Gender'] , drop_first = True )
 test.drop(['Gender'], axis = 1 , inplace =True)
-test = pd.concat([test , sex ] , axis = 1)
+test = pd.concat([test , gen ] , axis = 1)
 
 plt.figure(figsize=(6,6))
 labels = ['0' , '1', '2' , '3+']
